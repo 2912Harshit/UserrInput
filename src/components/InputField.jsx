@@ -35,7 +35,7 @@ const InputField=()=> {
     };
   return (
     
-    <div className="px-5 h-full border border-blue-300 rounded-3xl m-4 p-4">
+    <div className="px-5 h-full  m-4 p-4">
         <div className="sm:flex justify-around">
             <div className="w-52 md:w-96 pr-2">
                 <PreKnownInputBox label={"NAME"}  value={"Pranshul Gupta"} className="" />

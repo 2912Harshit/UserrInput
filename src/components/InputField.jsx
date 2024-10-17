@@ -35,9 +35,9 @@ const InputField=()=> {
     };
   return (
     
-    <div className="px-5 h-full">
-        <div className="flex justify-around">
-            <div className="w-52 md:w-96">
+    <div className="px-5 h-full border border-blue-300 rounded-3xl m-4 p-4">
+        <div className="sm:flex justify-around">
+            <div className="w-52 md:w-96 pr-2">
                 <PreKnownInputBox label={"NAME"}  value={"Pranshul Gupta"} className="" />
             </div>
             <div className="w-52 md:w-96">
@@ -45,46 +45,52 @@ const InputField=()=> {
             </div>
         </div>
         <div className="px-5 pt-16 py-3 md:flex justify-around">
-            <div className="md:w-52 lg:w-96 ">
+            <div className="md:w-52 lg:w-96 pr-2">
                 <DropDown inputs={gender} label={"Gender"} className=""/>
             </div>
-           <div className=" ">
+           <div className="pr-2 ">
             <div className="text-sm font-medium text-left py-2">
                 DOB (DD/MM/YYYY)
             </div>
-             <Calendar inputClassName="w-screen md:w-52 lg:w-96 border border-slate-300 bg-slate-200 px-2 py-1 md:py-2 rounded" variant="filled" value={dob} onChange={(e) => setDob(e.value)} />
+            <div  className="">
+                <Calendar inputClassName=" md:w-52 lg:w-96 border border-slate-300 bg-slate-200 px-2  py-1 md:py-2 rounded" variant="filled" value={dob} onChange={(e) => setDob(e.value)} />
+            </div>
+             
            </div>
            <div className="md:w-52 lg:w-96">
                 <DropDown inputs={category} label={"Category"}/>
            </div>
             
         </div>
-        <div className="px-5 md:pt-5  md:flex justify-around">
-            <div className="md:w-52 lg:w-96">
+        <div className="px-5 md:pt-5  md:flex justify-around pb-8">
+            <div className="md:w-52 lg:w-96 pr-2">
                 <DropDown inputs={BloodGroup} label={"Blood Group"}/>
             </div>
-            <div className="md:w-52 lg:w-96">
+            <div className="md:w-52 lg:w-96 pr-2">
                 <InputBox value={aadhar} label={"Aadhar Number"} onChange={handleInputChange} placeholder={"XXXX XXXX XXXX"}/>
             </div>
             <div className="md:w-52 lg:w-96">
                 <InputBox value={pan} label={"PAN Number"} onChange={e=>{setPan(e.target.value)}} placeholder={"ABCD1234A"} />
             </div>
         </div>
-        <div className="pt-14 pb-5 text-teal-400 font-semibold text-2xl flex justify-center">
+        <div className="border border-blue-200 pb-10 rounded-3xl">
+        <div className="pt-10 pb-5 subpixel-antialiased font-semibold text-2xl flex justify-center">
             Contact Details
         </div>
         <div className="px-5 md:pt-5  md:flex justify-around">
-            <div className="md:w-52 lg:w-96">
+            <div className="md:w-52 lg:w-96 pr-2">
                 <InputBox value={email} label={"Email ID"} onChange={e=>{setEmail(e.target.value)}} placeholder={"john@gmail.com"}/>
             </div>
-            <div className="md:w-52 lg:w-96">
+            <div className="md:w-52 lg:w-96 pr-2">
                 <InputBox value={studentContact} label={"Student Contact No."} onChange={e=>{setStudentContact(e.target.value)}} placeholder={"9353255756"}/>
             </div>
             <div className="md:w-52 lg:w-96">
                 <InputBox value={studentWhatsApp} label={"Student WhatsApp No."} onChange={e=>{setstudentWhatsApp(e.target.value)}} placeholder={"9353732786"}/>
             </div>
         </div>
-        <div className="pt-14 pb-5 text-teal-400 font-semibold text-2xl flex justify-center">
+        </div>
+        <div className="border border-blue-200 pb-10 rounded-3xl mt-4">
+        <div className="pt-12 pb-5 subpixel-antialiased  font-semibold text-2xl flex justify-center">
             Address
         </div>
         <div className="px-5 md:pt-5  md:flex justify-around">
@@ -93,31 +99,34 @@ const InputField=()=> {
             </div>
         </div>
         <div className="px-5 md:pt-5  md:flex justify-around">
-            <div className="md:w-52 lg:w-96">
+            <div className="md:w-52 lg:w-96 pr-2">
                 <InputBox value={state} onChange={e=>{setState(e.target.value)}} label={"State"} placeholder={"  "}/>
             </div>
-            <div className="md:w-52 lg:w-96">
+            <div className="md:w-52 lg:w-96 pr-2">
                 <InputBox value={city} onChange={e=>{setCity(e.target.value)}} label={"City"} placeholder={"  "}/>
             </div>
             <div className="md:w-52 lg:w-96">
                 <InputBox value={pincode} onChange={e=>{setPincode(e.target.value)}} label={"Pincode"} placeholder={"  "}/>
             </div>
         </div>
-        <div className=" pt-14 text-teal-400 pb-5 font-semibold text-2xl flex justify-center">
+        </div>
+        <div className="border border-blue-200 pb-10 rounded-3xl mt-4">
+        <div className=" pt-14  pb-5 font-semibold text-2xl flex justify-center subpixel-antialiased">
             Parents Details
         </div>
         <div className="px-5 md:pt-5  md:flex justify-around">
-            <div className="md:w-52 lg:w-96">
+            <div className="md:w-52 lg:w-96 pr-2">
                 <InputBox label={"Father Name"} onChange={e=>{setFather(e.target.value)}} value={father} placeholder={" "}/>
             </div>
-            <div className="md:w-52 lg:w-96">
+            <div className="md:w-52 lg:w-96 pr-2">
                 <InputBox label={"Mother Name"} onChange={e=>{setMother(e.target.value)}} value={mother} placeholder={" "}/>
             </div>
             <div className="md:w-52 lg:w-96">
                 <InputBox value={parentContact} label={"Parents Contact No."} onChange={e=>{setparentContact(e.target.value)}} placeholder={"8153255756"}/>
             </div>
         </div>
-        {aadhar}
+        </div>
+        
     </div>
     
   )

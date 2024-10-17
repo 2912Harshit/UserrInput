@@ -6,7 +6,7 @@ import InputField from "./InputField"
 export const PersonalDetails=()=>{
     return(
         <div className="bg-slate-100 px-10">
-            <div className=" pt-12 text-3xl text-teal-400 font-medium pb-5">PERSONAL DETAILS</div>
+            <div className=" pt-12 text-3xl text-teal-600 font-medium pb-5 antialiased">PERSONAL DETAILS</div>
             <div className="bg-white shadow-lg py-5 pb-16">
                 <InputField/>
             </div>

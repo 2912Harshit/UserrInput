@@ -4,6 +4,7 @@ import viteLogo from '/vite.svg'
 import './App.css'
 import InputField from './components/InputField'
 import { PersonalDetails } from './components/PersonalDetails'
+import { EducationDetails } from './components/EducationDetails'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -13,6 +14,7 @@ function App() {
       <div>
         {/* <InputField/> */}
         <PersonalDetails/>
+        {/* <EducationDetails/> */}
       </div>
       
     

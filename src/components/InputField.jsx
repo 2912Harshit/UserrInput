@@ -70,7 +70,7 @@ const InputField=()=> {
                 <InputBox value={pan} label={"PAN Number"} onChange={e=>{setPan(e.target.value)}} placeholder={"ABCD1234A"} />
             </div>
         </div>
-        <div className="pt-14 pb-5 font-semibold text-2xl flex justify-center">
+        <div className="pt-14 pb-5 text-teal-400 font-semibold text-2xl flex justify-center">
             Contact Details
         </div>
         <div className="px-5 md:pt-5  md:flex justify-around">
@@ -84,7 +84,7 @@ const InputField=()=> {
                 <InputBox value={studentWhatsApp} label={"Student WhatsApp No."} onChange={e=>{setstudentWhatsApp(e.target.value)}} placeholder={"9353732786"}/>
             </div>
         </div>
-        <div className="pt-14 pb-5 font-semibold text-2xl flex justify-center">
+        <div className="pt-14 pb-5 text-teal-400 font-semibold text-2xl flex justify-center">
             Address
         </div>
         <div className="px-5 md:pt-5  md:flex justify-around">
@@ -103,7 +103,7 @@ const InputField=()=> {
                 <InputBox value={pincode} onChange={e=>{setPincode(e.target.value)}} label={"Pincode"} placeholder={"  "}/>
             </div>
         </div>
-        <div className=" pt-14 pb-5 font-semibold text-2xl flex justify-center">
+        <div className=" pt-14 text-teal-400 pb-5 font-semibold text-2xl flex justify-center">
             Parents Details
         </div>
         <div className="px-5 md:pt-5  md:flex justify-around">

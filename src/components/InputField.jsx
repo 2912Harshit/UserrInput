@@ -73,7 +73,7 @@ const InputField=()=> {
                 <InputBox value={pan} label={"PAN Number"} onChange={e=>{setPan(e.target.value)}} placeholder={"ABCD1234A"} />
             </div>
         </div>
-        <div className="border border-blue-200 pb-10 rounded-3xl">
+        <div className="border border-emerald-200 pb-10 rounded-3xl">
         <div className="pt-10 pb-5 subpixel-antialiased font-semibold text-2xl flex justify-center">
             Contact Details
         </div>
@@ -89,7 +89,7 @@ const InputField=()=> {
             </div>
         </div>
         </div>
-        <div className="border border-blue-200 pb-10 rounded-3xl mt-4">
+        <div className="border border-emerald-200 pb-10 rounded-3xl mt-4">
         <div className="pt-12 pb-5 subpixel-antialiased  font-semibold text-2xl flex justify-center">
             Address
         </div>
@@ -110,7 +110,7 @@ const InputField=()=> {
             </div>
         </div>
         </div>
-        <div className="border border-blue-200 pb-10 rounded-3xl mt-4">
+        <div className="border border-emerald-200 pb-10 rounded-3xl mt-4">
         <div className=" pt-14  pb-5 font-semibold text-2xl flex justify-center subpixel-antialiased">
             Parents Details
         </div>

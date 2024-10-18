@@ -13,8 +13,8 @@ function App() {
     
       <div>
         {/* <InputField/> */}
-        <PersonalDetails/>
-        {/* <EducationDetails/> */}
+        {/* <PersonalDetails/> */}
+        <EducationDetails/>
       </div>
       
     

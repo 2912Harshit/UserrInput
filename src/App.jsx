@@ -6,6 +6,7 @@ import InputField from './components/InputField'
 import { PersonalDetails } from './components/PersonalDetails'
 import { EducationDetails } from './components/EducationDetails'
 import { GraduationDetails } from './components/GrahuationDetails'
+import { CourseProgressDetails } from './components/CourseProgressDetails'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -16,7 +17,8 @@ function App() {
         {/* <InputField/> */}
         {/* <PersonalDetails/> */}
         {/* <EducationDetails/> */}
-        <GraduationDetails/>
+        {/* <GraduationDetails/> */}
+        <CourseProgressDetails/>
       </div>
       
     

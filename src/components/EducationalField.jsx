@@ -74,7 +74,7 @@ export const EducationalField=()=>{
                         <InputBox label={"12th (%/CGPA)"} placeholder={" "} onChange={(e)=>{setTwelvePercent(e.target.value)}} value={twelvePercent}/>
                     </div>
                     <div className="md:w-52 lg:w-96 pr-2">
-                        <InputBox label={"12th Board"} placeholder={"RGPV"} onChange={(e)=>{setTwelveBoard(e.target.value)}} value={twelveBoard}/>
+                        <InputBox label={"12th Board"} placeholder={"CBSE"} onChange={(e)=>{setTwelveBoard(e.target.value)}} value={twelveBoard}/>
                     </div>
                     <div className="md:w-52 lg:w-96">
                         <InputBox label={"Year of Passing"} placeholder={" "} onChange={(e)=>{setTwelveYearOfPassing(e.target.value)}} value={twelveyearOfPassing}/>

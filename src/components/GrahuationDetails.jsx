@@ -6,8 +6,10 @@ export const GraduationDetails=()=>{
     const [graduationBranch,setGraduationBranch]=useState("")
     const [graduationCourse,setGraduationCourse]=useState("")
     const [graduationCollege,setGraduationCollege]=useState("")
+    const [courseRunBy,setCourseRunBy]=useState("")
     const [graduationPercent,setGraduationPercent]=useState(null)
     const [graduationYearOfPassing,setGraduationYearOfPassing]=useState(null)
+
     return(
         <div className="bg-slate-100 px-10 h-screen">
             <div className="pt-12 text-3xl text-teal-600 font-medium pb-5 antialiased">{`GRADUATION DETAILS`}</div>
@@ -24,7 +26,10 @@ export const GraduationDetails=()=>{
                     </div>
                         
                 </div>
-                <div className="px-44  md:pt-20  md:flex justify-around">
+                <div className="px-5  md:pt-20  md:flex justify-around">
+                     <div className="md:w-52 lg:w-96 pr-2">
+                        <InputBox label={"Course Run by"} placeholder={"RGPV"} onChange={(e)=>{setCourseRunBy(e.target.value)}} value={courseRunBy}/>
+                    </div>
                     <div className="md:w-52 lg:w-96 pr-2">
                         <InputBox label={"Graduation (%/CGPA)"} placeholder={" "} onChange={(e)=>{setGraduationPercent(e.target.value)}} value={graduationPercent}/>
                     </div>

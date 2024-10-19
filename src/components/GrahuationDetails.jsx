@@ -32,9 +32,9 @@ export const GraduationDetails = ({ initialData, onSave, preview }) => {
     };
 
     return (
-        <div className="bg-slate-100 px-10 ">
+        <div className='    px-10 '>
             
-            <div className="pt-12 text-3xl text-teal-600 font-medium pb-5 antialiased">GRADUATION DETAILS</div>
+            <div className="pt-12 text-3xl  text-teal-600 font-medium pb-5 antialiased">GRADUATION DETAILS</div>
 
             
             {/* {initialData && (
@@ -49,7 +49,7 @@ export const GraduationDetails = ({ initialData, onSave, preview }) => {
 
             <form onSubmit={handleSubmit}>
                 <div className="bg-white shadow-lg py-5 pb-16">
-                    <div className="px-5 md:pt-5 md:flex justify-around">
+                    <div className="px-5  md:pt-5 md:flex justify-around">
                         <div className="md:w-52 lg:w-96 pr-2">
                             <InputBox 
                                 label="Graduation College Name" 

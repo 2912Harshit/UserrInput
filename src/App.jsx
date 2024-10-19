@@ -34,7 +34,8 @@ function App() {
           <Routes>
             <Route path="/" element={<PersonalDetails initialData={formData} onSave={saveFormData} preview={true}/>}/>
             <Route path="/educational" element={<EducationDetails initialData={formData} onSave={saveFormData} preview={true}/>}/>
-            <Route path="/graduation" element={<GraduationDetails initialData={formData} onSave={saveFormData} preview={true}/>}/>
+            <Route path="/graduation" element={<div className='bg-slate-100 h-screen'><GraduationDetails  initialData={formData} onSave={saveFormData} preview={true}/>
+              </div>}/>
             <Route path="/progress" element={<CourseProgressDetails initialData={formData} onSave={saveFormData} preview={true}/>}/>
             <Route path="/preview" element={<Preview initialData={formData} onSave={saveFormData} />}/>
           </Routes>

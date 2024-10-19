@@ -9,7 +9,7 @@ export const CourseProgressDetails=()=>{
                 <CourseProgressField/>
             </div>
             <div className="flex justify-end p-4">
-                <NextButton/>
+                <NextButton type='submit' value='Save & Next->'/>
             </div>
         
       </div>

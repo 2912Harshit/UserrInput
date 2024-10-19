@@ -1,47 +1,107 @@
 import { useState } from "react"
 import { NextButton } from "./commonComponents/NextButton"
 import { InputBox } from "./commonComponents/InputBox"
+import { useNavigate } from "react-router-dom"
 
-export const GraduationDetails=()=>{
-    const [graduationBranch,setGraduationBranch]=useState("")
-    const [graduationCourse,setGraduationCourse]=useState("")
-    const [graduationCollege,setGraduationCollege]=useState("")
-    const [courseRunBy,setCourseRunBy]=useState("")
-    const [graduationPercent,setGraduationPercent]=useState(null)
-    const [graduationYearOfPassing,setGraduationYearOfPassing]=useState(null)
+export const GraduationDetails = ({ initialData, onSave }) => {
+    const navigate = useNavigate();
+    const [formData, setFormData] = useState({
+        graduationBranch: initialData?.graduationBranch || "",
+        graduationCourse: initialData?.graduationCourse || "",
+        graduationCollege: initialData?.graduationCollege || "",
+        courseRunBy: initialData?.courseRunBy || "",
+        graduationPercent: initialData?.graduationPercent || null,
+        graduationYearOfPassing: initialData?.graduationYearOfPassing || null
+    });
 
-    return(
+    const handleInputChange = (field, value) => {
+        setFormData(prev => ({
+            ...prev,
+            [field]: value
+        }));
+    };
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        onSave(formData);
+        navigate('/progress'); 
+    };
+
+    return (
         <div className="bg-slate-100 px-10 h-screen">
-            <div className="pt-12 text-3xl text-teal-600 font-medium pb-5 antialiased">{`GRADUATION DETAILS`}</div>
-            <div className="bg-white shadow-lg py-5 pb-16">
-                <div className="px-5 md:pt-5  md:flex justify-around">
-                    <div className="md:w-52 lg:w-96 pr-2">
-                        <InputBox label={"Graduation College Name"} placeholder={" "} onChange={(e)=>{setGraduationCollege(e.target.value)}} value={graduationCollege}/>
-                    </div>
-                    <div className="md:w-52 lg:w-96 pr-2">
-                        <InputBox label={"Graduation Course"} placeholder={" "} onChange={(e)=>{setGraduationCourse(e.target.value)}} value={graduationCourse}/>
-                    </div>
-                    <div className="md:w-52 lg:w-96">
-                        <InputBox label={"Graduation Branch"} placeholder={" "} onChange={(e)=>{setGraduationBranch(e.target.value)}} value={graduationBranch}/>
-                    </div>
-                        
+            <div className="pt-12 text-3xl text-teal-600 font-medium pb-5 antialiased">GRADUATION DETAILS</div>
+
+            {/* Debug display */}
+            {initialData && (
+                <div className="bg-yellow-100 p-4 mb-4 rounded">
+                    <h3 className="font-bold">Current State:</h3>
+                    <pre className="whitespace-pre-wrap">
+                        {JSON.stringify(initialData, null, 2)}
+                    </pre>
                 </div>
-                <div className="px-5  md:pt-20  md:flex justify-around">
-                     <div className="md:w-52 lg:w-96 pr-2">
-                        <InputBox label={"Course Run by"} placeholder={"RGPV"} onChange={(e)=>{setCourseRunBy(e.target.value)}} value={courseRunBy}/>
+            )}
+
+
+            <form onSubmit={handleSubmit}>
+                <div className="bg-white shadow-lg py-5 pb-16">
+                    <div className="px-5 md:pt-5 md:flex justify-around">
+                        <div className="md:w-52 lg:w-96 pr-2">
+                            <InputBox 
+                                label="Graduation College Name" 
+                                placeholder=" " 
+                                onChange={(e) => handleInputChange('graduationCollege', e.target.value)}
+                                value={formData.graduationCollege}
+                            />
+                        </div>
+                        <div className="md:w-52 lg:w-96 pr-2">
+                            <InputBox 
+                                label="Graduation Course" 
+                                placeholder=" " 
+                                onChange={(e) => handleInputChange('graduationCourse', e.target.value)}
+                                value={formData.graduationCourse}
+                            />
+                        </div>
+                        <div className="md:w-52 lg:w-96">
+                            <InputBox 
+                                label="Graduation Branch" 
+                                placeholder=" " 
+                                onChange={(e) => handleInputChange('graduationBranch', e.target.value)}
+                                value={formData.graduationBranch}
+                            />
+                        </div>
                     </div>
-                    <div className="md:w-52 lg:w-96 pr-2">
-                        <InputBox label={"Graduation (%/CGPA)"} placeholder={" "} onChange={(e)=>{setGraduationPercent(e.target.value)}} value={graduationPercent}/>
-                    </div>
-                    <div className="md:w-52 lg:w-96">
-                        <InputBox label={"Year of Passing"} placeholder={" "} onChange={(e)=>{setGraduationYearOfPassing(e.target.value)}} value={graduationYearOfPassing}/>
+                    <div className="px-5 md:pt-20 md:flex justify-around">
+                        <div className="md:w-52 lg:w-96 pr-2">
+                            <InputBox 
+                                label="Course Run by" 
+                                placeholder="RGPV" 
+                                onChange={(e) => handleInputChange('courseRunBy', e.target.value)}
+                                value={formData.courseRunBy}
+                            />
+                        </div>
+                        <div className="md:w-52 lg:w-96 pr-2">
+                            <InputBox 
+                                label="Graduation (%/CGPA)" 
+                                placeholder=" " 
+                                onChange={(e) => handleInputChange('graduationPercent', e.target.value)}
+                                value={formData.graduationPercent}
+                            />
+                        </div>
+                        <div className="md:w-52 lg:w-96">
+                            <InputBox 
+                                label="Year of Passing" 
+                                placeholder=" " 
+                                onChange={(e) => handleInputChange('graduationYearOfPassing', e.target.value)}
+                                value={formData.graduationYearOfPassing}
+                            />
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div className="flex justify-end p-4">
-                <NextButton/>
-            </div>
-        
-      </div>
-    )
-}
+                <div className="flex justify-end p-4">
+                    <NextButton type='submit' value='Save & Next->'/>
+                </div>
+            </form>
+           
+        </div>
+    );
+};

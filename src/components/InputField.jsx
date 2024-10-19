@@ -3,38 +3,54 @@ import { InputBox } from "./commonComponents/InputBox"
 import { PreKnownInputBox } from "./commonComponents/PreKnownInputBox"
 import { DropDown } from "./commonComponents/DropDowm"
 import { Calendar } from 'primereact/calendar';
+import { NextButton } from "./commonComponents/NextButton";
         
-const InputField=()=> {
+const InputField=({initialData, onSave})=> {
     
-    const [dob,setDob]=useState(null);
-    const [aadhar,setAadhar]=useState("")
-    const [pan,setPan]=useState("")
-    const [email,setEmail]=useState("")
-    const [studentContact,setStudentContact]=useState(null)
-    const [studentWhatsApp,setstudentWhatsApp]=useState(null)
-    const [address,setAddress]=useState("")
-    const [state,setState]=useState("")
-    const [city,setCity]=useState("")
-    const [pincode,setPincode]=useState(null)
-    const [father,setFather]=useState("")
-    const [mother,setMother]=useState("")
-    const [parentContact,setparentContact]=useState(null)
+    const [formData, setFormData] = useState({
+        dob: initialData?.dob || null,
+        aadhar: initialData?.aadhar || "",
+        pan: initialData?.pan || "",
+        email: initialData?.email || "",
+        studentContact: initialData?.studentContact || null,
+        studentWhatsApp: initialData?.studentWhatsApp || null,
+        address: initialData?.address || "",
+        state: initialData?.state || "",
+        city: initialData?.city || "",
+        pincode: initialData?.pincode || null,
+        father: initialData?.father || "",
+        mother: initialData?.mother || "",
+        parentContact: initialData?.parentContact || null,
+        gender: initialData?.gender || "",
+        category: initialData?.category || "",
+        bloodGroup: initialData?.bloodGroup || ""
+    });
 
-    const gender=["   ","Male","Female","Other"]
-    const category=["  ","General","OBC","Schedule Caste","Schedule Tribe"]
-    const BloodGroup=["  ","A positive (A+)","A negative (A-)","B positive (B+)","B negative (B-)","O positive (O+)","O negative (O-)","AB positive (AB+)","AB negative (AB-)"]
+    const gender = ["   ", "Male", "Female", "Other"]
+    const category = ["  ", "General", "OBC", "Schedule Caste", "Schedule Tribe"]
+    const BloodGroup = ["  ", "A positive (A+)", "A negative (A-)", "B positive (B+)", "B negative (B-)", "O positive (O+)", "O negative (O-)", "AB positive (AB+)", "AB negative (AB-)"]
 
-    const handleInputChange = (e) => {
-        let value = e.target.value.replace(/\D/g, ''); 
-        value = value.slice(0, 12);
-        let formattedAadhaar = value
-            .replace(/(\d{4})(\d{4})(\d{0,4})/, '$1 $2 $3')
-            .trim();
-
-        setAadhar(formattedAadhaar);
+    const handleInputChange = (field, value) => {
+        // if (field === 'aadhar') {
+        //     value = value.replace(/\D/g, '');
+        //     value = value.slice(0, 12);
+        //     value = value.replace(/(\d{4})(\d{4})(\d{0,4})/, '$1 $2 $3').trim();
+        // }
+        
+        setFormData(prev => ({
+            ...prev,
+            [field]: value
+        }));
     };
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        onSave(formData);
+    };
+
   return (
-    
+    <form onSubmit={handleSubmit}>
+    <div className="bg-white shadow-lg py-5 pb-16">
     <div className="px-5 h-full  m-4 p-4">
         <div className="sm:flex justify-around">
             <div className="w-52 md:w-96 pr-2">
@@ -46,31 +62,31 @@ const InputField=()=> {
         </div>
         <div className="px-5 pt-16 py-3 md:flex justify-around">
             <div className="md:w-52 lg:w-96 pr-2">
-                <DropDown inputs={gender} label={"Gender"} className=""/>
+                <DropDown inputs={gender} value={formData.gender} onChange={e=>{handleInputChange('gender',e.target.value)}} label={"Gender"} className=""/>
             </div>
            <div className="pr-2 ">
             <div className="text-sm font-medium text-left py-2">
                 DOB (DD/MM/YYYY)
             </div>
             <div  className="">
-                <Calendar inputClassName=" md:w-52 lg:w-96 border border-slate-300 bg-slate-200 px-2  py-1 md:py-2 rounded" variant="filled" value={dob} onChange={(e) => setDob(e.value)} />
+                <Calendar value={formData.dob} inputClassName=" md:w-52 lg:w-96 border border-slate-300 bg-slate-200 px-2  py-1 md:py-2 rounded" variant="filled"  onChange={(e) => handleInputChange('dob',e.target.value)} />
             </div>
              
            </div>
            <div className="md:w-52 lg:w-96">
-                <DropDown inputs={category} label={"Category"}/>
+                <DropDown inputs={category} label={"Category"} value={formData.category} onChange={(e)=>handleInputChange('category',e.target.value)}/>
            </div>
             
         </div>
         <div className="px-5 md:pt-5  md:flex justify-around pb-8">
             <div className="md:w-52 lg:w-96 pr-2">
-                <DropDown inputs={BloodGroup} label={"Blood Group"}/>
+                <DropDown inputs={BloodGroup} label={"Blood Group"} value={formData.bloodGroup} onChange={e=>{handleInputChange('bloodGroup',e.target.value)}}/>
             </div>
             <div className="md:w-52 lg:w-96 pr-2">
-                <InputBox value={aadhar} label={"Aadhar Number"} onChange={handleInputChange} placeholder={"XXXX XXXX XXXX"}/>
+                <InputBox value={formData.aadhar} label={"Aadhar Number"} onChange={e=>{handleInputChange('aadhar',e.target.value)}} placeholder={"XXXX XXXX XXXX"}/>
             </div>
             <div className="md:w-52 lg:w-96">
-                <InputBox value={pan} label={"PAN Number"} onChange={e=>{setPan(e.target.value)}} placeholder={"ABCD1234A"} />
+                <InputBox value={formData.pan} label={"PAN Number"} onChange={e=>{handleInputChange('pan',e.target.value)}} placeholder={"ABCD1234A"} />
             </div>
         </div>
         <div className="border border-emerald-200 pb-10 rounded-3xl">
@@ -79,13 +95,13 @@ const InputField=()=> {
         </div>
         <div className="px-5 md:pt-5  md:flex justify-around">
             <div className="md:w-52 lg:w-96 pr-2">
-                <InputBox value={email} label={"Email ID"} onChange={e=>{setEmail(e.target.value)}} placeholder={"john@gmail.com"}/>
+                <InputBox value={formData.email} label={"Email ID"} onChange={e=>{handleInputChange('email',e.target.value)}} placeholder={"john@gmail.com"}/>
             </div>
             <div className="md:w-52 lg:w-96 pr-2">
-                <InputBox value={studentContact} label={"Student Contact No."} onChange={e=>{setStudentContact(e.target.value)}} placeholder={"9353255756"}/>
+                <InputBox value={formData.studentContact} label={"Student Contact No."} onChange={e=>{handleInputChange('studentContact',e.target.value)}} placeholder={"9353255756"}/>
             </div>
             <div className="md:w-52 lg:w-96">
-                <InputBox value={studentWhatsApp} label={"Student WhatsApp No."} onChange={e=>{setstudentWhatsApp(e.target.value)}} placeholder={"9353732786"}/>
+                <InputBox value={formData.studentWhatsApp} label={"Student WhatsApp No."} onChange={e=>{handleInputChange('studentWhatsApp',e.target.value)}} placeholder={"9353732786"}/>
             </div>
         </div>
         </div>
@@ -95,18 +111,18 @@ const InputField=()=> {
         </div>
         <div className="px-5 md:pt-5  md:flex justify-around">
             <div className="md:w-52 lg:w-96">
-                <InputBox value={address} label={"Permanent Address(as per Aadhar)"} onChange={e=>{setAddress(e.target.value)}} placeholder={" "}/>
+                <InputBox value={formData.address} label={"Permanent Address(as per Aadhar)"} onChange={e=>{handleInputChange('address',e.target.value)}} placeholder={" "}/>
             </div>
         </div>
         <div className="px-5 md:pt-5  md:flex justify-around">
             <div className="md:w-52 lg:w-96 pr-2">
-                <InputBox value={state} onChange={e=>{setState(e.target.value)}} label={"State"} placeholder={"  "}/>
+                <InputBox value={formData.state} onChange={e=>{handleInputChange('state',e.target.value)}} label={"State"} placeholder={"  "}/>
             </div>
             <div className="md:w-52 lg:w-96 pr-2">
-                <InputBox value={city} onChange={e=>{setCity(e.target.value)}} label={"City"} placeholder={"  "}/>
+                <InputBox value={formData.city} onChange={e=>{handleInputChange('city',e.target.value)}} label={"City"} placeholder={"  "}/>
             </div>
             <div className="md:w-52 lg:w-96">
-                <InputBox value={pincode} onChange={e=>{setPincode(e.target.value)}} label={"Pincode"} placeholder={"  "}/>
+                <InputBox value={formData.pincode} onChange={e=>{handleInputChange('pincode',e.target.value)}} label={"Pincode"} placeholder={"  "}/>
             </div>
         </div>
         </div>
@@ -116,18 +132,23 @@ const InputField=()=> {
         </div>
         <div className="px-5 md:pt-5  md:flex justify-around">
             <div className="md:w-52 lg:w-96 pr-2">
-                <InputBox label={"Father Name"} onChange={e=>{setFather(e.target.value)}} value={father} placeholder={" "}/>
+                <InputBox label={"Father Name"} onChange={e=>{handleInputChange('father',e.target.value)}} value={formData.father} placeholder={" "}/>
             </div>
             <div className="md:w-52 lg:w-96 pr-2">
-                <InputBox label={"Mother Name"} onChange={e=>{setMother(e.target.value)}} value={mother} placeholder={" "}/>
+                <InputBox label={"Mother Name"} onChange={e=>{handleInputChange('mother',e.target.value)}} value={formData.mother} placeholder={" "}/>
             </div>
             <div className="md:w-52 lg:w-96">
-                <InputBox value={parentContact} label={"Parents Contact No."} onChange={e=>{setparentContact(e.target.value)}} placeholder={"8153255756"}/>
+                <InputBox value={formData.parentContact} label={"Parents Contact No."} onChange={e=>{handleInputChange('parentContact',e.target.value)}} placeholder={"8153255756"}/>
             </div>
         </div>
         </div>
         
     </div>
+    </div>
+    <div className="flex justify-end p-4">
+        <NextButton value='Save & Next ->' type='submit'  />
+    </div>
+    </form>
     
   )
 }

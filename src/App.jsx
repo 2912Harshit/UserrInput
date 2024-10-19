@@ -7,9 +7,18 @@ import { PersonalDetails } from './components/PersonalDetails'
 import { EducationDetails } from './components/EducationDetails'
 import { GraduationDetails } from './components/GrahuationDetails'
 import { CourseProgressDetails } from './components/CourseProgressDetails'
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [formData,setFormData]=useState({});
+
+  const saveFormData = (newData)=>{
+    setFormData(prev=>({
+      ...prev,
+      ...newData
+    }));
+    console.log("Global state updated:",formData)
+  };
 
   return (
     
@@ -18,7 +27,15 @@ function App() {
         {/* <PersonalDetails/> */}
         {/* <EducationDetails/> */}
         {/* <GraduationDetails/> */}
-        <CourseProgressDetails/>
+        {/* <CourseProgressDetails/> */}
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<PersonalDetails initialData={formData} onSave={saveFormData}/>}/>
+            <Route path="/educational" element={<EducationDetails initialData={formData} onSave={saveFormData}/>}/>
+            <Route path="/graduation" element={<GraduationDetails initialData={formData} onSave={saveFormData}/>}/>
+            <Route path="/progress" element={<CourseProgressDetails initialData={formData} onSave={saveFormData}/>}/>
+          </Routes>
+        </BrowserRouter>
       </div>
       
     

@@ -4,6 +4,7 @@ import { PreKnownInputBox } from "./commonComponents/PreKnownInputBox"
 import { DropDown } from "./commonComponents/DropDowm"
 import { Calendar } from 'primereact/calendar';
 import { NextButton } from "./commonComponents/NextButton";
+import DatePicker from "./commonComponents/DataPicker";
         
 const InputField=({initialData, onSave})=> {
     
@@ -65,11 +66,15 @@ const InputField=({initialData, onSave})=> {
                 <DropDown inputs={gender} value={formData.gender} onChange={e=>{handleInputChange('gender',e.target.value)}} label={"Gender"} className=""/>
             </div>
            <div className="pr-2 ">
-            <div className="text-sm font-medium text-left py-2">
+            {/* <div className="text-sm font-medium text-left py-2">
                 DOB (DD/MM/YYYY)
-            </div>
+            </div> */}
             <div  className="">
-                <Calendar value={formData.dob} inputClassName=" md:w-52 lg:w-96 border border-slate-300 bg-slate-200 px-2  py-1 md:py-2 rounded" variant="filled"  onChange={(e) => handleInputChange('dob',e.target.value)} />
+                {/* <Calendar value={formData.dob} inputClassName=" md:w-52 lg:w-96 border border-slate-300 bg-slate-200 px-2  py-1 md:py-2 rounded" variant="filled"  onChange={(e) => handleInputChange('dob',e.target.value)} /> */}
+                <DatePicker 
+                    value={formData.dob} 
+                    onChange={(value) => handleInputChange('dob', value)} 
+                    />
             </div>
              
            </div>

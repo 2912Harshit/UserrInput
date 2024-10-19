@@ -31,15 +31,15 @@ export const GraduationDetails = ({ initialData, onSave }) => {
         <div className="bg-slate-100 px-10 h-screen">
             <div className="pt-12 text-3xl text-teal-600 font-medium pb-5 antialiased">GRADUATION DETAILS</div>
 
-            {/* Debug display */}
-            {initialData && (
+            
+            {/* {initialData && (
                 <div className="bg-yellow-100 p-4 mb-4 rounded">
                     <h3 className="font-bold">Current State:</h3>
                     <pre className="whitespace-pre-wrap">
                         {JSON.stringify(initialData, null, 2)}
                     </pre>
                 </div>
-            )}
+            )} */}
 
 
             <form onSubmit={handleSubmit}>

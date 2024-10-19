@@ -17,7 +17,7 @@ function App() {
       ...prev,
       ...newData
     }));
-    console.log("Global state updated:",formData)
+    // console.log("Global state updated:",formData)
   };
 
   return (

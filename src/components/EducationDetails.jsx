@@ -2,7 +2,7 @@ import { useNavigate } from "react-router-dom";
 import { NextButton } from "./commonComponents/NextButton"
 import { EducationalField } from "./EducationalField"
 
-export const EducationDetails=({ initialData, onSave})=>{
+export const EducationDetails=({ initialData, onSave, preview})=>{
     const navigate = useNavigate();
 
     const handleSave = (formData) => {
@@ -24,7 +24,7 @@ export const EducationDetails=({ initialData, onSave})=>{
             )} */}
             
             <div className="">
-                <EducationalField initialData={initialData} onSave={handleSave}/>
+                <EducationalField initialData={initialData} onSave={handleSave} preview={preview}/>
             </div>
             
       </div>

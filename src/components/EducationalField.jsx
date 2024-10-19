@@ -3,7 +3,7 @@ import { InputBox } from "./commonComponents/InputBox"
 import { NextButton } from "./commonComponents/NextButton"
 import { useNavigate } from "react-router-dom";
 
-export const EducationalField = ({ initialData, onSave }) => {
+export const EducationalField = ({ initialData, onSave,preview }) => {
     const navigate=useNavigate();
     const [formData, setFormData] = useState({
         tenthSchoolName: initialData?.tenthSchoolName || "",
@@ -231,6 +231,7 @@ export const EducationalField = ({ initialData, onSave }) => {
                 
                 
             </div>
+            {preview&&
             <div className="flex justify-between">
                     <div className="  p-4">
                         <NextButton type='button' onClick={handlePrevious} value='<- Previous'/>
@@ -238,7 +239,7 @@ export const EducationalField = ({ initialData, onSave }) => {
                     <div className=" p-4">
                         <NextButton type='submit' value='Save & Next->'/>
                     </div>
-                </div>
+                </div>}
         </form>
     );
 };

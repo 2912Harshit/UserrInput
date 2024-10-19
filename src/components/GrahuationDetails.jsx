@@ -3,7 +3,7 @@ import { NextButton } from "./commonComponents/NextButton"
 import { InputBox } from "./commonComponents/InputBox"
 import { useNavigate } from "react-router-dom"
 
-export const GraduationDetails = ({ initialData, onSave }) => {
+export const GraduationDetails = ({ initialData, onSave, preview }) => {
     const navigate = useNavigate();
     const [formData, setFormData] = useState({
         graduationBranch: initialData?.graduationBranch || "",
@@ -27,8 +27,13 @@ export const GraduationDetails = ({ initialData, onSave }) => {
         navigate('/progress'); 
     };
 
+    const handlePrevious=()=>{
+        navigate('/educational');
+    };
+
     return (
-        <div className="bg-slate-100 px-10 h-screen">
+        <div className="bg-slate-100 px-10 ">
+            
             <div className="pt-12 text-3xl text-teal-600 font-medium pb-5 antialiased">GRADUATION DETAILS</div>
 
             
@@ -97,9 +102,15 @@ export const GraduationDetails = ({ initialData, onSave }) => {
                         </div>
                     </div>
                 </div>
-                <div className="flex justify-end p-4">
-                    <NextButton type='submit' value='Save & Next->'/>
-                </div>
+                {preview&&
+                <div className="flex justify-between">
+                    <div className="  p-4">
+                        <NextButton type='button' onClick={handlePrevious} value='<- Previous'/>
+                    </div>
+                    <div className=" p-4">
+                        <NextButton type='submit' value='Save & Next->'/>
+                    </div>
+                </div>}
             </form>
            
         </div>

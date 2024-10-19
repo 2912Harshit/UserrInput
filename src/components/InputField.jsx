@@ -6,7 +6,7 @@ import { Calendar } from 'primereact/calendar';
 import { NextButton } from "./commonComponents/NextButton";
 import DatePicker from "./commonComponents/DataPicker";
         
-const InputField=({initialData, onSave})=> {
+const InputField=({initialData, onSave, preview})=> {
     
     const [formData, setFormData] = useState({
         dob: initialData?.dob || null,
@@ -150,9 +150,10 @@ const InputField=({initialData, onSave})=> {
         
     </div>
     </div>
+    {preview &&
     <div className="flex justify-end p-4">
         <NextButton value='Save & Next ->' type='submit'  />
-    </div>
+    </div>}
     </form>
     
   )

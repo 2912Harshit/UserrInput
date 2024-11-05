@@ -20,6 +20,10 @@ function App() {
     }));
     // console.log("Global state updated:",formData)
   };
+
+  const replaceFormData =(newData)=>{
+    setFormData(newData);
+  }
   
 
   return (

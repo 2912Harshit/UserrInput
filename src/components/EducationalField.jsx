@@ -4,6 +4,7 @@ import { NextButton } from "./commonComponents/NextButton"
 import { useNavigate } from "react-router-dom";
 
 export const EducationalField = ({ initialData, onSave,preview }) => {
+    const isPreview=!preview;
     const navigate=useNavigate();
     const [formData, setFormData] = useState({
         tenthSchoolName: initialData?.tenthSchoolName || "",
@@ -57,7 +58,7 @@ export const EducationalField = ({ initialData, onSave,preview }) => {
                         </div>
                         <div className="px-5 md:pt-5 md:flex justify-around">
                             <div className="md:w-52 lg:w-96 pr-2">
-                                <InputBox 
+                                <InputBox disabled={isPreview}
                                     label="School Name" 
                                     placeholder=" " 
                                     onChange={(e) => handleInputChange('tenthSchoolName', e.target.value)}
@@ -65,7 +66,7 @@ export const EducationalField = ({ initialData, onSave,preview }) => {
                                 />
                             </div>
                             <div className="md:w-52 lg:w-96 pr-2">
-                                <InputBox 
+                                <InputBox disabled={isPreview}
                                     label="City" 
                                     placeholder=" " 
                                     onChange={(e) => handleInputChange('tenthCity', e.target.value)}
@@ -73,7 +74,7 @@ export const EducationalField = ({ initialData, onSave,preview }) => {
                                 />
                             </div>
                             <div className="md:w-52 lg:w-96">
-                                <InputBox 
+                                <InputBox disabled={isPreview}
                                     label="State" 
                                     placeholder=" " 
                                     onChange={(e) => handleInputChange('tenthState', e.target.value)}
@@ -83,7 +84,7 @@ export const EducationalField = ({ initialData, onSave,preview }) => {
                         </div>
                         <div className="px-5 md:pt-5 md:flex justify-around">
                             <div className="md:w-52 lg:w-96 pr-2">
-                                <InputBox 
+                                <InputBox disabled={isPreview}
                                     label="10th (%/CGPA)" 
                                     placeholder=" " 
                                     onChange={(e) => handleInputChange('tenthPercent', e.target.value)}
@@ -91,7 +92,7 @@ export const EducationalField = ({ initialData, onSave,preview }) => {
                                 />
                             </div>
                             <div className="md:w-52 lg:w-96 pr-2">
-                                <InputBox 
+                                <InputBox disabled={isPreview}
                                     label="10th Board" 
                                     placeholder="MP Board" 
                                     onChange={(e) => handleInputChange('tenthBoard', e.target.value)}
@@ -99,7 +100,7 @@ export const EducationalField = ({ initialData, onSave,preview }) => {
                                 />
                             </div>
                             <div className="md:w-52 lg:w-96">
-                                <InputBox 
+                                <InputBox disabled={isPreview}
                                     label="Year of Passing" 
                                     placeholder=" " 
                                     onChange={(e) => handleInputChange('tenthYearOfPassing', e.target.value)}
@@ -116,7 +117,7 @@ export const EducationalField = ({ initialData, onSave,preview }) => {
                         </div>
                         <div className="px-5 md:pt-5 md:flex justify-around">
                             <div className="md:w-52 lg:w-96 pr-2">
-                                <InputBox 
+                                <InputBox disabled={isPreview}
                                     label="School Name" 
                                     placeholder=" " 
                                     onChange={(e) => handleInputChange('twelveSchoolName', e.target.value)}
@@ -124,7 +125,7 @@ export const EducationalField = ({ initialData, onSave,preview }) => {
                                 />
                             </div>
                             <div className="md:w-52 lg:w-96 pr-2">
-                                <InputBox 
+                                <InputBox disabled={isPreview}
                                     label="City" 
                                     placeholder=" " 
                                     onChange={(e) => handleInputChange('twelveCity', e.target.value)}
@@ -132,7 +133,7 @@ export const EducationalField = ({ initialData, onSave,preview }) => {
                                 />
                             </div>
                             <div className="md:w-52 lg:w-96">
-                                <InputBox 
+                                <InputBox disabled={isPreview}
                                     label="State" 
                                     placeholder=" " 
                                     onChange={(e) => handleInputChange('twelveState', e.target.value)}
@@ -142,7 +143,7 @@ export const EducationalField = ({ initialData, onSave,preview }) => {
                         </div>
                         <div className="px-5 md:pt-5 md:flex justify-around">
                             <div className="md:w-52 lg:w-96 pr-2">
-                                <InputBox 
+                                <InputBox disabled={isPreview}
                                     label="12th (%/CGPA)" 
                                     placeholder=" " 
                                     onChange={(e) => handleInputChange('twelvePercent', e.target.value)}
@@ -150,7 +151,7 @@ export const EducationalField = ({ initialData, onSave,preview }) => {
                                 />
                             </div>
                             <div className="md:w-52 lg:w-96 pr-2">
-                                <InputBox 
+                                <InputBox disabled={isPreview}
                                     label="12th Board" 
                                     placeholder="CBSE" 
                                     onChange={(e) => handleInputChange('twelveBoard', e.target.value)}
@@ -158,7 +159,7 @@ export const EducationalField = ({ initialData, onSave,preview }) => {
                                 />
                             </div>
                             <div className="md:w-52 lg:w-96">
-                                <InputBox 
+                                <InputBox disabled={isPreview}
                                     label="Year of Passing" 
                                     placeholder=" " 
                                     onChange={(e) => handleInputChange('twelveYearOfPassing', e.target.value)}
@@ -183,7 +184,7 @@ export const EducationalField = ({ initialData, onSave,preview }) => {
                             </div>
                             <div className="px-5 md:pt-5 md:flex justify-around">
                                 <div className="md:w-52 lg:w-96 pr-2">
-                                    <InputBox 
+                                    <InputBox disabled={isPreview}
                                         label="College Name" 
                                         placeholder=" " 
                                         onChange={(e) => handleInputChange('diplomaCollegeName', e.target.value)}
@@ -191,7 +192,7 @@ export const EducationalField = ({ initialData, onSave,preview }) => {
                                     />
                                 </div>
                                 <div className="md:w-52 lg:w-96 pr-2">
-                                    <InputBox 
+                                    <InputBox disabled={isPreview}
                                         label="City" 
                                         placeholder=" " 
                                         onChange={(e) => handleInputChange('diplomaCity', e.target.value)}
@@ -199,7 +200,7 @@ export const EducationalField = ({ initialData, onSave,preview }) => {
                                     />
                                 </div>
                                 <div className="md:w-52 lg:w-96">
-                                    <InputBox 
+                                    <InputBox disabled={isPreview}
                                         label="State" 
                                         placeholder=" " 
                                         onChange={(e) => handleInputChange('diplomaState', e.target.value)}
@@ -209,7 +210,7 @@ export const EducationalField = ({ initialData, onSave,preview }) => {
                             </div>
                             <div className="px-5 md:pt-5 md:flex justify-around">
                                 <div className="md:w-52 lg:w-96 pr-2">
-                                    <InputBox 
+                                    <InputBox disabled={isPreview}
                                         label="Diploma %" 
                                         placeholder=" " 
                                         onChange={(e) => handleInputChange('diplomaPercent', e.target.value)}
@@ -217,7 +218,7 @@ export const EducationalField = ({ initialData, onSave,preview }) => {
                                     />
                                 </div>
                                 <div className="md:w-52 lg:w-96">
-                                    <InputBox 
+                                    <InputBox disabled={isPreview}
                                         label="Year of Passing" 
                                         placeholder=" " 
                                         onChange={(e) => handleInputChange('diplomaYearOfPassing', e.target.value)}

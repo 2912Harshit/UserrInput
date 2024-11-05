@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const DatePicker = ({ value, onChange }) => {
+const DatePicker = ({ value, onChange,disabled }) => {
   const [showCalendar, setShowCalendar] = useState(false);
   const [currentDate, setCurrentDate] = useState(new Date());
   
@@ -69,13 +69,14 @@ const DatePicker = ({ value, onChange }) => {
   };
 
   return (
-    <div className="relative w-full">
+    <div className=" w-full">
       <div className="text-sm font-medium text-left py-2">
         DOB (DD/MM/YYYY)
       </div>
       <input
         type="text"
-        className="w-full md:w-96 border border-slate-300 bg-slate-200 px-2 py-1 md:py-2 rounded"
+        disabled={disabled}
+        className={`w-full md:w-96 border ${disabled ? 'bg-slate-100' : 'bg-slate-200'} border-slate-300  px-2 py-1 md:py-2 rounded`}
         value={formatDate(value)}
         onClick={() => setShowCalendar(true)}
         readOnly

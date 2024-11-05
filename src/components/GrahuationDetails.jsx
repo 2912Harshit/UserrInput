@@ -4,6 +4,7 @@ import { InputBox } from "./commonComponents/InputBox"
 import { useNavigate } from "react-router-dom"
 
 export const GraduationDetails = ({ initialData, onSave, preview }) => {
+    const isPreview=!preview;
     const navigate = useNavigate();
     const [formData, setFormData] = useState({
         graduationBranch: initialData?.graduationBranch || "",
@@ -51,7 +52,7 @@ export const GraduationDetails = ({ initialData, onSave, preview }) => {
                 <div className="bg-white shadow-lg py-5 pb-16">
                     <div className="px-5  md:pt-5 md:flex justify-around">
                         <div className="md:w-52 lg:w-96 pr-2">
-                            <InputBox 
+                            <InputBox disabled={isPreview}
                                 label="Graduation College Name" 
                                 placeholder=" " 
                                 onChange={(e) => handleInputChange('graduationCollege', e.target.value)}
@@ -59,7 +60,7 @@ export const GraduationDetails = ({ initialData, onSave, preview }) => {
                             />
                         </div>
                         <div className="md:w-52 lg:w-96 pr-2">
-                            <InputBox 
+                            <InputBox disabled={isPreview}
                                 label="Graduation Course" 
                                 placeholder=" " 
                                 onChange={(e) => handleInputChange('graduationCourse', e.target.value)}
@@ -67,7 +68,7 @@ export const GraduationDetails = ({ initialData, onSave, preview }) => {
                             />
                         </div>
                         <div className="md:w-52 lg:w-96">
-                            <InputBox 
+                            <InputBox disabled={isPreview}
                                 label="Graduation Branch" 
                                 placeholder=" " 
                                 onChange={(e) => handleInputChange('graduationBranch', e.target.value)}
@@ -77,7 +78,7 @@ export const GraduationDetails = ({ initialData, onSave, preview }) => {
                     </div>
                     <div className="px-5 md:pt-20 md:flex justify-around">
                         <div className="md:w-52 lg:w-96 pr-2">
-                            <InputBox 
+                            <InputBox disabled={isPreview}
                                 label="Course Run by" 
                                 placeholder="RGPV" 
                                 onChange={(e) => handleInputChange('courseRunBy', e.target.value)}
@@ -85,7 +86,7 @@ export const GraduationDetails = ({ initialData, onSave, preview }) => {
                             />
                         </div>
                         <div className="md:w-52 lg:w-96 pr-2">
-                            <InputBox 
+                            <InputBox disabled={isPreview}
                                 label="Graduation (%/CGPA)" 
                                 placeholder=" " 
                                 onChange={(e) => handleInputChange('graduationPercent', e.target.value)}
@@ -93,7 +94,7 @@ export const GraduationDetails = ({ initialData, onSave, preview }) => {
                             />
                         </div>
                         <div className="md:w-52 lg:w-96">
-                            <InputBox 
+                            <InputBox disabled={isPreview}
                                 label="Year of Passing" 
                                 placeholder=" " 
                                 onChange={(e) => handleInputChange('graduationYearOfPassing', e.target.value)}

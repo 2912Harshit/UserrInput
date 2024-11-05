@@ -7,6 +7,7 @@ import { NextButton } from "./commonComponents/NextButton";
 import DatePicker from "./commonComponents/DataPicker";
         
 const InputField=({initialData, onSave, preview})=> {
+    const isPreview = !preview;
     
     const [formData, setFormData] = useState({
         dob: initialData?.dob || null,
@@ -37,7 +38,7 @@ const InputField=({initialData, onSave, preview})=> {
         //     value = value.slice(0, 12);
         //     value = value.replace(/(\d{4})(\d{4})(\d{0,4})/, '$1 $2 $3').trim();
         // }
-        
+        if (isPreview) return;
         setFormData(prev => ({
             ...prev,
             [field]: value
@@ -46,7 +47,9 @@ const InputField=({initialData, onSave, preview})=> {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        onSave(formData);
+        if (!isPreview) {
+            onSave(formData);
+        }
     };
 
   return (
@@ -58,12 +61,12 @@ const InputField=({initialData, onSave, preview})=> {
                 <PreKnownInputBox label={"NAME"}  value={"Pranshul Gupta"} className="" />
             </div>
             <div className="w-52 md:w-96">
-                <PreKnownInputBox label={"ENROLLMENT No."} value={"0176AL221098"}/>
+                <PreKnownInputBox label={"ENROLLMENT No."} value={"0176AL221098"} />
             </div>
         </div>
         <div className="px-5 pt-16 py-3 md:flex justify-around">
             <div className="md:w-52 lg:w-96 pr-2">
-                <DropDown inputs={gender} value={formData.gender} onChange={e=>{handleInputChange('gender',e.target.value)}} label={"Gender"} className=""/>
+                <DropDown disabled={isPreview} inputs={gender} value={formData.gender} onChange={e=>{handleInputChange('gender',e.target.value)}} label={"Gender"} className=""/>
             </div>
            <div className="pr-2 ">
             {/* <div className="text-sm font-medium text-left py-2">
@@ -74,24 +77,24 @@ const InputField=({initialData, onSave, preview})=> {
                 <DatePicker 
                     value={formData.dob} 
                     onChange={(value) => handleInputChange('dob', value)} 
-                    />
+                    disabled={isPreview}/>
             </div>
              
            </div>
            <div className="md:w-52 lg:w-96">
-                <DropDown inputs={category} label={"Category"} value={formData.category} onChange={(e)=>handleInputChange('category',e.target.value)}/>
+                <DropDown disabled={isPreview} inputs={category} label={"Category"} value={formData.category} onChange={(e)=>handleInputChange('category',e.target.value)}/>
            </div>
             
         </div>
         <div className="px-5 md:pt-5  md:flex justify-around pb-8">
             <div className="md:w-52 lg:w-96 pr-2">
-                <DropDown inputs={BloodGroup} label={"Blood Group"} value={formData.bloodGroup} onChange={e=>{handleInputChange('bloodGroup',e.target.value)}}/>
+                <DropDown disabled={isPreview} inputs={BloodGroup} label={"Blood Group"} value={formData.bloodGroup} onChange={e=>{handleInputChange('bloodGroup',e.target.value)}}/>
             </div>
             <div className="md:w-52 lg:w-96 pr-2">
-                <InputBox value={formData.aadhar} label={"Aadhar Number"} onChange={e=>{handleInputChange('aadhar',e.target.value)}} placeholder={"XXXX XXXX XXXX"}/>
+                <InputBox disabled={isPreview} value={formData.aadhar} label={"Aadhar Number"} onChange={e=>{handleInputChange('aadhar',e.target.value)}} placeholder={"XXXX XXXX XXXX"}/>
             </div>
             <div className="md:w-52 lg:w-96">
-                <InputBox value={formData.pan} label={"PAN Number"} onChange={e=>{handleInputChange('pan',e.target.value)}} placeholder={"ABCD1234A"} />
+                <InputBox disabled={isPreview} value={formData.pan} label={"PAN Number"} onChange={e=>{handleInputChange('pan',e.target.value)}} placeholder={"ABCD1234A"} />
             </div>
         </div>
         <div className="border border-emerald-200 pb-10 rounded-3xl">
@@ -100,13 +103,13 @@ const InputField=({initialData, onSave, preview})=> {
         </div>
         <div className="px-5 md:pt-5  md:flex justify-around">
             <div className="md:w-52 lg:w-96 pr-2">
-                <InputBox value={formData.email} label={"Email ID"} onChange={e=>{handleInputChange('email',e.target.value)}} placeholder={"john@gmail.com"}/>
+                <InputBox disabled={isPreview} value={formData.email} label={"Email ID"} onChange={e=>{handleInputChange('email',e.target.value)}} placeholder={"john@gmail.com"}/>
             </div>
             <div className="md:w-52 lg:w-96 pr-2">
-                <InputBox value={formData.studentContact} label={"Student Contact No."} onChange={e=>{handleInputChange('studentContact',e.target.value)}} placeholder={"9353255756"}/>
+                <InputBox disabled={isPreview} value={formData.studentContact} label={"Student Contact No."} onChange={e=>{handleInputChange('studentContact',e.target.value)}} placeholder={"9353255756"}/>
             </div>
             <div className="md:w-52 lg:w-96">
-                <InputBox value={formData.studentWhatsApp} label={"Student WhatsApp No."} onChange={e=>{handleInputChange('studentWhatsApp',e.target.value)}} placeholder={"9353732786"}/>
+                <InputBox disabled={isPreview} value={formData.studentWhatsApp} label={"Student WhatsApp No."} onChange={e=>{handleInputChange('studentWhatsApp',e.target.value)}} placeholder={"9353732786"}/>
             </div>
         </div>
         </div>
@@ -116,18 +119,18 @@ const InputField=({initialData, onSave, preview})=> {
         </div>
         <div className="px-5 md:pt-5  md:flex justify-around">
             <div className="md:w-52 lg:w-96">
-                <InputBox value={formData.address} label={"Permanent Address(as per Aadhar)"} onChange={e=>{handleInputChange('address',e.target.value)}} placeholder={" "}/>
+                <InputBox disabled={isPreview} value={formData.address} label={"Permanent Address(as per Aadhar)"} onChange={e=>{handleInputChange('address',e.target.value)}} placeholder={" "}/>
             </div>
         </div>
         <div className="px-5 md:pt-5  md:flex justify-around">
             <div className="md:w-52 lg:w-96 pr-2">
-                <InputBox value={formData.state} onChange={e=>{handleInputChange('state',e.target.value)}} label={"State"} placeholder={"  "}/>
+                <InputBox disabled={isPreview} value={formData.state} onChange={e=>{handleInputChange('state',e.target.value)}} label={"State"} placeholder={"  "}/>
             </div>
             <div className="md:w-52 lg:w-96 pr-2">
-                <InputBox value={formData.city} onChange={e=>{handleInputChange('city',e.target.value)}} label={"City"} placeholder={"  "}/>
+                <InputBox disabled={isPreview} value={formData.city} onChange={e=>{handleInputChange('city',e.target.value)}} label={"City"} placeholder={"  "}/>
             </div>
             <div className="md:w-52 lg:w-96">
-                <InputBox value={formData.pincode} onChange={e=>{handleInputChange('pincode',e.target.value)}} label={"Pincode"} placeholder={"  "}/>
+                <InputBox disabled={isPreview} value={formData.pincode} onChange={e=>{handleInputChange('pincode',e.target.value)}} label={"Pincode"} placeholder={"  "}/>
             </div>
         </div>
         </div>
@@ -137,13 +140,13 @@ const InputField=({initialData, onSave, preview})=> {
         </div>
         <div className="px-5 md:pt-5  md:flex justify-around">
             <div className="md:w-52 lg:w-96 pr-2">
-                <InputBox label={"Father Name"} onChange={e=>{handleInputChange('father',e.target.value)}} value={formData.father} placeholder={" "}/>
+                <InputBox disabled={isPreview} label={"Father Name"} onChange={e=>{handleInputChange('father',e.target.value)}} value={formData.father} placeholder={" "}/>
             </div>
             <div className="md:w-52 lg:w-96 pr-2">
-                <InputBox label={"Mother Name"} onChange={e=>{handleInputChange('mother',e.target.value)}} value={formData.mother} placeholder={" "}/>
+                <InputBox disabled={isPreview} label={"Mother Name"} onChange={e=>{handleInputChange('mother',e.target.value)}} value={formData.mother} placeholder={" "}/>
             </div>
             <div className="md:w-52 lg:w-96">
-                <InputBox value={formData.parentContact} label={"Parents Contact No."} onChange={e=>{handleInputChange('parentContact',e.target.value)}} placeholder={"8153255756"}/>
+                <InputBox disabled={isPreview} value={formData.parentContact} label={"Parents Contact No."} onChange={e=>{handleInputChange('parentContact',e.target.value)}} placeholder={"8153255756"}/>
             </div>
         </div>
         </div>

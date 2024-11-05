@@ -4,6 +4,7 @@ import { NextButton } from "./commonComponents/NextButton";
 import { useNavigate } from "react-router-dom";
 
 export const CourseProgressField = ({ initialData, onSave,preview }) => {
+    const isPreview=!preview;
     const navigate = useNavigate();
     const [formData, setFormData] = useState({
         firstSGPA: initialData?.firstSGPA || null,
@@ -50,7 +51,7 @@ export const CourseProgressField = ({ initialData, onSave,preview }) => {
                         </div>
                         <div className="px-5 md:pt-5 md:flex justify-around">
                             <div className="md:w-52 lg:w-96 pr-2">
-                                <InputBox 
+                                <InputBox disabled={isPreview}
                                     label="1st Semester SGPA"
                                     placeholder=" "
                                     onChange={(e) => handleInputChange('firstSGPA', e.target.value)}
@@ -58,7 +59,7 @@ export const CourseProgressField = ({ initialData, onSave,preview }) => {
                                 />
                             </div>
                             <div className="md:w-52 lg:w-96 pr-2">
-                                <InputBox 
+                                <InputBox disabled={isPreview}
                                     label="1st Sem Backlogs"
                                     placeholder="AL-204,AL-305..."
                                     onChange={(e) => handleInputChange('firstBacklogs', e.target.value)}
@@ -68,7 +69,7 @@ export const CourseProgressField = ({ initialData, onSave,preview }) => {
                         </div>
                         <div className="px-5 md:pt-14 md:flex justify-around">
                             <div className="md:w-52 lg:w-96 pr-2">
-                                <InputBox 
+                                <InputBox disabled={isPreview}
                                     label="2nd Semester SGPA"
                                     placeholder=" "
                                     onChange={(e) => handleInputChange('secondSGPA', e.target.value)}
@@ -76,7 +77,7 @@ export const CourseProgressField = ({ initialData, onSave,preview }) => {
                                 />
                             </div>
                             <div className="md:w-52 lg:w-96 pr-2">
-                                <InputBox 
+                                <InputBox disabled={isPreview}
                                     label="2nd Sem Backlogs"
                                     placeholder="AL-201,AL-303..."
                                     onChange={(e) => handleInputChange('secondBacklogs', e.target.value)}
@@ -86,7 +87,7 @@ export const CourseProgressField = ({ initialData, onSave,preview }) => {
                         </div>
                         <div className="px-5 md:pt-14 md:flex justify-around">
                             <div className="md:w-52 lg:w-96 pr-2">
-                                <InputBox 
+                                <InputBox disabled={isPreview}
                                     label="3rd Semester SGPA"
                                     placeholder=" "
                                     onChange={(e) => handleInputChange('thirdSGPA', e.target.value)}
@@ -94,7 +95,7 @@ export const CourseProgressField = ({ initialData, onSave,preview }) => {
                                 />
                             </div>
                             <div className="md:w-52 lg:w-96 pr-2">
-                                <InputBox 
+                                <InputBox disabled={isPreview}
                                     label="3rd Sem Backlogs"
                                     placeholder="AL-202,AL-205..."
                                     onChange={(e) => handleInputChange('thirdBacklogs', e.target.value)}
@@ -104,7 +105,7 @@ export const CourseProgressField = ({ initialData, onSave,preview }) => {
                         </div>
                         <div className="px-5 md:pt-14 md:flex justify-around">
                             <div className="md:w-52 lg:w-96 pr-2">
-                                <InputBox 
+                                <InputBox disabled={isPreview}
                                     label="4th Semester SGPA"
                                     placeholder=" "
                                     onChange={(e) => handleInputChange('fourthSGPA', e.target.value)}
@@ -112,7 +113,7 @@ export const CourseProgressField = ({ initialData, onSave,preview }) => {
                                 />
                             </div>
                             <div className="md:w-52 lg:w-96 pr-2">
-                                <InputBox 
+                                <InputBox disabled={isPreview}
                                     label="4th Sem Backlogs"
                                     placeholder="AL-204,AL-305..."
                                     onChange={(e) => handleInputChange('fourthBacklogs', e.target.value)}
@@ -122,7 +123,7 @@ export const CourseProgressField = ({ initialData, onSave,preview }) => {
                         </div>
                         <div className="px-5 md:pt-14 md:flex justify-around">
                             <div className="md:w-52 lg:w-96 pr-2">
-                                <InputBox 
+                                <InputBox disabled={isPreview}
                                     label="5th Semester SGPA"
                                     placeholder=" "
                                     onChange={(e) => handleInputChange('fifthSGPA', e.target.value)}
@@ -130,7 +131,7 @@ export const CourseProgressField = ({ initialData, onSave,preview }) => {
                                 />
                             </div>
                             <div className="md:w-52 lg:w-96 pr-2">
-                                <InputBox 
+                                <InputBox disabled={isPreview}
                                     label="5th Sem Backlogs"
                                     placeholder="AL-204,AL-305..."
                                     onChange={(e) => handleInputChange('fifthBacklogs', e.target.value)}
@@ -140,7 +141,7 @@ export const CourseProgressField = ({ initialData, onSave,preview }) => {
                         </div>
                         <div className="px-5 md:pt-14 md:flex justify-around">
                             <div className="md:w-52 lg:w-96 pr-2">
-                                <InputBox 
+                                <InputBox disabled={isPreview}
                                     label="6th Semester SGPA"
                                     placeholder=" "
                                     onChange={(e) => handleInputChange('sixthSGPA', e.target.value)}
@@ -148,7 +149,7 @@ export const CourseProgressField = ({ initialData, onSave,preview }) => {
                                 />
                             </div>
                             <div className="md:w-52 lg:w-96 pr-2">
-                                <InputBox 
+                                <InputBox disabled={isPreview}
                                     label="6th Sem Backlogs"
                                     placeholder="AL-204,AL-305..."
                                     onChange={(e) => handleInputChange('sixthBacklogs', e.target.value)}
@@ -158,7 +159,7 @@ export const CourseProgressField = ({ initialData, onSave,preview }) => {
                         </div>
                         <div className="px-5 md:pt-14 md:flex justify-around">
                             <div className="md:w-52 lg:w-96 pr-2">
-                                <InputBox 
+                                <InputBox disabled={isPreview}
                                     label="7th Semester SGPA"
                                     placeholder=" "
                                     onChange={(e) => handleInputChange('seventhSGPA', e.target.value)}
@@ -166,7 +167,7 @@ export const CourseProgressField = ({ initialData, onSave,preview }) => {
                                 />
                             </div>
                             <div className="md:w-52 lg:w-96 pr-2">
-                                <InputBox 
+                                <InputBox disabled={isPreview}
                                     label="7th Sem Backlogs"
                                     placeholder="AL-204,AL-305..."
                                     onChange={(e) => handleInputChange('seventhBacklogs', e.target.value)}
@@ -176,7 +177,7 @@ export const CourseProgressField = ({ initialData, onSave,preview }) => {
                         </div>
                         <div className="px-5 md:pt-14 md:flex justify-around">
                             <div className="md:w-52 lg:w-96 pr-2">
-                                <InputBox 
+                                <InputBox disabled={isPreview}
                                     label="Aggregate(Current CGPA)"
                                     placeholder=" "
                                     onChange={(e) => handleInputChange('currentCGPA', e.target.value)}
@@ -184,7 +185,7 @@ export const CourseProgressField = ({ initialData, onSave,preview }) => {
                                 />
                             </div>
                             <div className="md:w-52 lg:w-96 pr-2">
-                                <InputBox 
+                                <InputBox disabled={isPreview}
                                     label="Pending Backlogs"
                                     placeholder="AL-204,AL-305..."
                                     onChange={(e) => handleInputChange('pendingBacklogs', e.target.value)}

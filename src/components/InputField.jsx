@@ -5,6 +5,7 @@ import { DropDown } from "./commonComponents/DropDowm"
 import { Calendar } from 'primereact/calendar';
 import { NextButton } from "./commonComponents/NextButton";
 import DatePicker from "./commonComponents/DataPicker";
+import axios from "axios";
         
 const InputField=({initialData, onSave, preview})=> {
     const isPreview = !preview;
@@ -62,8 +63,8 @@ const InputField=({initialData, onSave, preview})=> {
             });
             setFormData(prev => ({
               ...prev,
-              name: response.data.name,
-              enrollmentNumber: response.data.enrollmentNumber
+              name: response.data.user,
+              enrollmentNumber: response.data.username
             }));
           } catch (error) {
             console.error('Error fetching student details:', error);

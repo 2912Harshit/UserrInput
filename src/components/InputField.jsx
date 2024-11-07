@@ -55,7 +55,11 @@ const InputField=({initialData, onSave, preview})=> {
     useEffect(() => {
         const fetchStudentDetails = async () => {
           try {
-            const response = await axios.get('http://localhost:8080/api/v1/student/getStudentId');
+            const response = await axios.get('http://localhost:8080/api/v1/student/getStudentId',{
+                headers:{
+                    Authorization:"Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6IjEyMzQ1Njc4OSIsInJvbGUiOiJzdHVkZW50IiwibmFtZSI6IkpvaG4gRG9lIn0.ICZx0BP2-0E0qrjSSPsbNYJQMi_CUNK9KaaGqyZeTzY"
+                }
+            });
             setFormData(prev => ({
               ...prev,
               name: response.data.name,

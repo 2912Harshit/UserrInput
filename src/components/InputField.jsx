@@ -5,6 +5,7 @@ import { DropDown } from "./commonComponents/DropDowm"
 import { Calendar } from 'primereact/calendar';
 import { NextButton } from "./commonComponents/NextButton";
 import DatePicker from "./commonComponents/DataPicker";
+import axios from "axios";
         
 const InputField=({initialData, onSave, preview})=> {
     const isPreview = !preview;
@@ -55,11 +56,15 @@ const InputField=({initialData, onSave, preview})=> {
     useEffect(() => {
         const fetchStudentDetails = async () => {
           try {
-            const response = await axios.get('http://localhost:8080/api/v1/student/getStudentId');
+            const response = await axios.get('http://localhost:8080/api/v1/student/getStudentId',{
+                headers:{
+                    Authorization:"Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6IjEyMzQ1Njc4OSIsInJvbGUiOiJzdHVkZW50IiwibmFtZSI6IkpvaG4gRG9lIn0.ICZx0BP2-0E0qrjSSPsbNYJQMi_CUNK9KaaGqyZeTzY"
+                }
+            });
             setFormData(prev => ({
               ...prev,
-              name: response.data.name,
-              enrollmentNumber: response.data.enrollmentNumber
+              name: response.data.user,
+              enrollmentNumber: response.data.username
             }));
           } catch (error) {
             console.error('Error fetching student details:', error);

@@ -27,7 +27,11 @@ export const Preview= ({ initialData, onSave})=>{
         try {
             const response = await axios.post(
                 "http://localhost:8080/api/v1/student/student-user-profile",
-                initialData
+                initialData,{
+                    headers:{
+                        Authorization:"Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6IjEyMzQ1Njc4OSIsInJvbGUiOiJzdHVkZW50IiwibmFtZSI6IkpvaG4gRG9lIn0.ICZx0BP2-0E0qrjSSPsbNYJQMi_CUNK9KaaGqyZeTzY"
+                    }
+                }
             );
             
             if (response.status === 200) {

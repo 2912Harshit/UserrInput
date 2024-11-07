@@ -25,9 +25,111 @@ export const Preview= ({ initialData, onSave})=>{
         setError(null);
 
         try {
+            const finalData={
+                "personalDetails": {
+                  "gender": initialData.gender,
+                  "dateOfBirth": initialData.dob,
+                  "category": initialData.category,
+                  "bloodGroup": initialData.bloodGroup,
+                  "contact": {
+                    "emailId": initialData.email,
+                    "studentContact": initialData.studentContact,
+                    "studentWhatsapp": initialData.studentWhatsapp
+                  },
+                  "address": {
+                    "permanentAddress": initialData.address,
+                    "state": initialData.state,
+                    "city": initialData.city,
+                    "pincode": initialData.pincode
+                  },
+                  "parentDetails": {
+                    "fatherName": initialData.father,
+                    "motherName": initialData.mother,
+                    "parentsContact": initialData.parentContact
+                  }
+                },
+                "educationalBackground": {
+                  "tenthStandard": {
+                    "schoolName": initialData.tenthSchoolName,
+                    "city": initialData.tenthCity,
+                    "state": initialData.tenthState,
+                    "percentage": initialData.tenthPercent,
+                    "board": initialData.tenthBoard,
+                    "yearOfPassing": initialData.tenthYearOfPassing
+                  },
+                  "twelfthStandard": {
+                    "schoolName": initialData.twelveSchoolName,
+                    "city": initialData.twelveCity,
+                    "state": initialData.twelveState,
+                    "percentage": initialData.twelvePercent,
+                    "board": initialData.twelveBoard,
+                    "yearOfPassing": initialData.twelveYearOfPassing
+                  },
+                  "diploma": {
+                    "collegeName": initialData.diplomaCollegeName,
+                    "city": initialData.diplomaCity,
+                    "state": initialData.diplomaState,
+                    "percentage": initialData.diplomaPercent,
+                    "yearOfPassing": initialData.diplomaYearOfPassing,
+                  }
+                },
+                "graduationDetails": {
+                  "collegeName": initialData.graduationCollege,
+                  "course": initialData.graduationCourse,
+                  "branch": initialData.graduationBranch,
+                  "courseRunBy": initialData.courseRunBy,
+                  "percentage": initialData.graduationPercent,
+                  "yearOfPassing": initialData.graduationYearOfPassing,
+                },
+                "courseProgress": {
+                  "semesterDetails": {
+                    "firstSemester": {
+                      "sgpa": initialData.firstSGPA,
+                      "backlogs": [
+                        initialData.firstBacklogs
+                      ]
+                    },
+                    "secondSemester": {
+                      "sgpa": initialData.secondSGPA,
+                      "backlogs": [
+                        initialData.secondBacklogs
+                      ]
+                    },
+                    "thirdSemester": {
+                      "sgpa": initialData.thirdSGPA,
+                      "backlogs": [
+                        initialData.thirdBacklogs
+                      ]
+                    },
+                    "fourthSemester": {
+                      "sgpa": initialData.fourthSGPA,
+                      "backlogs": [
+                        initialData.fourthBacklogs
+                      ]
+                    },
+                    "fifthSemester": {
+                      "sgpa": initialData.fifthSGPA,
+                      "backlogs": [
+                        initialData.fifthBacklogs
+                      ]
+                    },
+                    "sixthSemester": {
+                      "sgpa": initialData.sixthSGPA,
+                      "backlogs": [initialData.sixthBacklogs]
+                    },
+                    "seventhSemester": {
+                      "sgpa": initialData.seventhSGPA,
+                      "backlogs": [initialData.seventhBacklogs]
+                    }
+                  },
+                  "aggregateCGPA": initialData.currentCGPA,
+                  "pendingBacklogs": initialData.pendingBacklogs
+
+                }
+              }
             const response = await axios.post(
                 "http://localhost:8080/api/v1/student/student-user-profile",
-                initialData,{
+                finalData,{
                     headers:{
                         Authorization:"Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6IjEyMzQ1Njc4OSIsInJvbGUiOiJzdHVkZW50IiwibmFtZSI6IkpvaG4gRG9lIn0.ICZx0BP2-0E0qrjSSPsbNYJQMi_CUNK9KaaGqyZeTzY"
                     }

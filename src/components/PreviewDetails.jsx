@@ -26,12 +26,12 @@ export const Preview= ({ initialData, onSave})=>{
 
         try {
             const response = await axios.post(
-                "http://localhost:3000/api/v1/student/user-details",
+                "http://localhost:8080/api/v1/student/student-user-profile",
                 initialData
             );
             
             if (response.status === 200) {
-                navigate("/");
+                navigate("/student");
             }
         } catch (err) {
             setError(err.response?.data?.message || "Failed to submit form data");

@@ -11,6 +11,8 @@ export const PersonalDetails=({ initialData, onSave,preview})=>{
         onSave(formData);
         navigate('/educational');
     }
+
+    
     
     return(
         <div className="bg-slate-100 px-10">

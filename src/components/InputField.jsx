@@ -38,13 +38,13 @@ const InputField=({initialData, onSave, preview})=> {
         //     value = value.slice(0, 12);
         //     value = value.replace(/(\d{4})(\d{4})(\d{0,4})/, '$1 $2 $3').trim();
         // }
-        if (isPreview) return;
+        if (isPreview || field === 'name' || field === 'enrollmentNumber') return;
         setFormData(prev => ({
             ...prev,
             [field]: value
         }));
     };
-
+    
     const handleSubmit = (e) => {
         e.preventDefault();
         if (!isPreview) {
@@ -52,16 +52,34 @@ const InputField=({initialData, onSave, preview})=> {
         }
     };
 
+    useEffect(() => {
+        const fetchStudentDetails = async () => {
+          try {
+            const response = await axios.get('http://localhost:8080/api/v1/student/getStudentId');
+            setFormData(prev => ({
+              ...prev,
+              name: response.data.name,
+              enrollmentNumber: response.data.enrollmentNumber
+            }));
+          } catch (error) {
+            console.error('Error fetching student details:', error);
+          }
+        };
+    
+        fetchStudentDetails();
+      }, []);
+    
+
   return (
     <form onSubmit={handleSubmit}>
     <div className="bg-white shadow-lg py-5 pb-16">
     <div className="px-5 h-full  m-4 p-4">
         <div className="sm:flex justify-around">
             <div className="w-52 md:w-96 pr-2">
-                <PreKnownInputBox label={"NAME"}  value={"Pranshul Gupta"} className="" />
+                <PreKnownInputBox label={"NAME"}  value={formData.name} className="" />
             </div>
             <div className="w-52 md:w-96">
-                <PreKnownInputBox label={"ENROLLMENT No."} value={"0176AL221098"} />
+                <PreKnownInputBox label={"ENROLLMENT No."} value={formData.enrollmentNumber} />
             </div>
         </div>
         <div className="px-5 pt-16 py-3 md:flex justify-around">
